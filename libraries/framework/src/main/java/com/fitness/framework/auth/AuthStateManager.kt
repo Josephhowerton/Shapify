@@ -1,7 +1,6 @@
-package com.fitness.authentication.util
+package com.fitness.framework.auth
 
 import android.util.Log
-import com.fitness.framework.auth.AuthState
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,5 +18,9 @@ object AuthStateManager : FirebaseAuth.AuthStateListener {
                 state.value = AuthState.LoggedOut
             }
         }
+    }
+
+    fun setAuthState(newState: AuthState) {
+        state.value = newState
     }
 }

@@ -141,7 +141,9 @@ class CreateAccountViewModel @Inject constructor(
     private fun onCreateUser(userDto: UserDto) = safeLaunch{
         val params = CreateUserUseCase.Params(userDto)
         execute(createUserUseCase(params)) {
-
+            if(it){
+                setState(BaseViewState.Complete)
+            }
         }
     }
 

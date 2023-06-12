@@ -1,8 +1,6 @@
 package com.fitness.authentication.login
 
 import android.util.Patterns
-import com.fitness.authentication.util.AuthStateManager
-import com.fitness.framework.auth.AuthState
 import com.fitness.framework.auth.handleAuthFailure
 import com.fitness.framework.auth.passwordVerification
 import com.fitness.framework.state.BaseViewState

@@ -10,11 +10,11 @@ import com.fitness.authentication.forgot.ForgotPasswordNumberScreen
 import com.fitness.authentication.login.LoginEvent
 import com.fitness.authentication.login.LoginWithEmailScreen
 import com.fitness.authentication.login.LoginWithPhoneScreen
+import com.fitness.framework.auth.AuthStateManager
+import com.fitness.framework.auth.AuthState
 import com.fitness.framework.extensions.cast
 import com.fitness.framework.viewmodel.injectedViewModel
-import com.fitness.home.HomeEntry
 import com.fitness.navigation.Destinations
-import com.fitness.navigation.find
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.navigation
 import javax.inject.Inject
@@ -42,7 +42,7 @@ class LoginEntryImpl @Inject constructor(): LoginEntry() {
                 LoginWithEmailScreen(
                     state = viewModel.uiState.cast(),
                     onErrorEvent = { viewModel.onTriggerEvent(LoginEvent.Reset) },
-                    onLoginCompleteEvent = { navController.navigate(destinations.find<HomeEntry>().featureRoute) },
+                    onLoginCompleteEvent = { AuthStateManager.setAuthState(AuthState.LoggedIn) },
                     onTriggerEvent = { viewModel.onTriggerEvent(it) },
                     onForgotPasswordEvent = {navController.navigate(forgotPasswordRoute)},
                     onPhoneAuthEvent = {navController.navigate(phoneRoute)},
@@ -62,7 +62,7 @@ class LoginEntryImpl @Inject constructor(): LoginEntry() {
                 LoginWithPhoneScreen(
                     state = viewModel.uiState.cast(),
                     onErrorEvent = { viewModel.onTriggerEvent(LoginEvent.Reset) },
-                    onLoginCompleteEvent = { navController.navigate(destinations.find<HomeEntry>().featureRoute) },
+                    onLoginCompleteEvent = { AuthStateManager.setAuthState(AuthState.LoggedIn) },
                     onTriggerEvent = { viewModel.onTriggerEvent(it) },
                     onEmailEvent = {navController.navigateUp()},
                     verifyCredentialsEvent = { viewModel.verifyCredentials(it) }

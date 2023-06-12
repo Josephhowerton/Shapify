@@ -9,7 +9,6 @@ import com.fitness.authentication.create.CreateAccountEvent
 import com.fitness.authentication.create.CreateAccountWithEmailScreen
 import com.fitness.authentication.create.CreateAccountWithPhoneScreen
 import com.fitness.authentication.di.component.DaggerCreateAccountComponent
-import com.fitness.authentication.util.AuthStateManager
 import com.fitness.framework.extensions.cast
 import com.fitness.framework.viewmodel.injectedViewModel
 import com.fitness.navigation.Destinations

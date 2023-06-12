@@ -14,7 +14,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import com.fitness.authentication.util.AuthStateManager
+import com.fitness.framework.auth.AuthStateManager
 import com.fitness.framework.auth.AuthState
 import com.fitness.shapify.di.ShapifyApp
 import com.fitness.shapify.di.provider.LocalAppProvider

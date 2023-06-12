@@ -1,13 +1,8 @@
 package com.fitness.shapify.navigation
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
 import com.fitness.auth.CreateEntry
 import com.fitness.auth.LoginEntry
 import com.fitness.welcome.WelcomeEntry

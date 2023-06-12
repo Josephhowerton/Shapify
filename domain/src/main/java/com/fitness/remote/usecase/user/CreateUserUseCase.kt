@@ -11,6 +11,6 @@ class CreateUserUseCase : DataStateUseCase<CreateUserUseCase.Params, Boolean>() 
     data class Params(val userDto: UserDto)
 
     override suspend fun FlowCollector<DataState<Boolean>>.execute(params: Params) {
-        TODO("Not yet implemented")
+        emit(DataState.Success(true))
     }
 }
