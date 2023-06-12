@@ -1,0 +1,15 @@
+package com.fitness.planner.fitness.planner
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
+
+@Preview
+@Composable
+private fun WorkoutPlannerPreview(){
+    WorkoutPlannerScreen()
+}
+
+@Composable
+fun WorkoutPlannerScreen(){
+
+}

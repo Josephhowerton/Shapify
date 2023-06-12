@@ -1,0 +1,156 @@
+package com.fitness.authentication.create
+
+import android.util.Patterns
+import com.fitness.authentication.login.LoginState
+import com.fitness.framework.auth.handleAuthFailure
+import com.fitness.framework.auth.passwordVerification
+import com.fitness.framework.state.BaseViewState
+import com.fitness.framework.viewmodel.IntentViewModel
+import com.fitness.model.remote.user.UserDto
+import com.fitness.remote.usecase.auth.create.EmailPasswordCreateUseCase
+import com.fitness.remote.usecase.auth.create.GoogleCreateUseCase
+import com.fitness.remote.usecase.auth.create.PhoneNumberCreateUseCase
+import com.fitness.remote.usecase.auth.create.TwitterCreateUseCase
+import com.fitness.remote.usecase.user.CreateUserUseCase
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import java.util.concurrent.TimeUnit
+import javax.inject.Inject
+
+class CreateAccountViewModel @Inject constructor(
+    val emailPasswordCreateUseCase: EmailPasswordCreateUseCase,
+    val googleCreateUseCase: GoogleCreateUseCase,
+    val phoneNumberCreateUseCase: PhoneNumberCreateUseCase,
+    val twitterCreateUseCase: TwitterCreateUseCase,
+    val createUserUseCase: CreateUserUseCase
+): IntentViewModel<BaseViewState<CreateAccountState>, CreateAccountEvent>() {
+
+    init {
+        setState(BaseViewState.Data(CreateAccountState()))
+    }
+
+    override fun onTriggerEvent(event: CreateAccountEvent) {
+        when(event){
+            is CreateAccountEvent.EmailPasswordAuthData -> {
+                onEmailPasswordAuth(
+                    firstname = event.firstname,
+                    lastname = event.lastname,
+                    email = event.email,
+                    password = event.password
+                )
+            }
+
+            is CreateAccountEvent.GoogleAuthData -> {
+                onGoogleAuth(
+                    firstname = event.firstname,
+                    lastname = event.lastname
+                )
+            }
+
+            is CreateAccountEvent.PhoneAuthData -> {
+                onPhoneAuth(
+                    firstname = event.firstname,
+                    lastname = event.lastname,
+                    phone = event.phoneNumber
+                )
+            }
+
+            is CreateAccountEvent.TwitterAuthData -> {
+                onTwitterAuth(
+                    firstname = event.firstname,
+                    lastname = event.lastname
+                )
+            }
+            else -> {
+                setState(BaseViewState.Data(CreateAccountState()))
+            }
+        }
+    }
+
+    override fun handleError(exception: Throwable) {
+        super.handleError(exception.handleAuthFailure())
+    }
+
+    fun verifyCredentials(event: CreateAccountEvent) {
+        when(event) {
+            is CreateAccountEvent.EmailPasswordAuthData -> {
+                val firstname = event.firstname
+                val lastname = event.lastname
+                val email = event.email
+                val password = event.password
+                setState(
+                    BaseViewState.Data(
+                        CreateAccountState(
+                            !(firstname.isNullOrBlank() && lastname.isNullOrBlank()) &&
+                                passwordVerification(password) &&
+                                Patterns.EMAIL_ADDRESS.matcher(email).matches()
+                        )
+                    )
+                )
+            }
+            is CreateAccountEvent.PhoneAuthData -> {
+                val firstname = event.firstname
+                val lastname = event.lastname
+                val phone = event.phoneNumber
+                setState(
+                    BaseViewState.Data(
+                        CreateAccountState(
+                            !(firstname.isNullOrBlank() && lastname.isNullOrBlank())
+                                    && Patterns.PHONE.matcher(phone).matches()
+                        )
+                    )
+                )
+
+            }
+            else -> {
+                setState(BaseViewState.Data(CreateAccountState(false)))
+            }
+        }
+    }
+
+    private fun onEmailPasswordAuth(firstname: String, lastname: String, email: String, password:String) = safeLaunch {
+        val params = EmailPasswordCreateUseCase.Params(firstname, lastname, email, password)
+        execute(emailPasswordCreateUseCase(params)) {
+            onCreateUser(it)
+        }
+    }
+
+    private fun onGoogleAuth(firstname: String, lastname: String) = safeLaunch {
+        val params = GoogleCreateUseCase.Params(firstname, lastname)
+        execute(googleCreateUseCase(params)) {
+            onCreateUser(it)
+        }
+    }
+
+    private fun onPhoneAuth(firstname: String, lastname: String, phone:String) = safeLaunch {
+        val params = PhoneNumberCreateUseCase.Params(firstname, lastname, phone)
+        execute(phoneNumberCreateUseCase(params)) {
+            onCreateUser(it)
+        }
+    }
+
+    private fun onTwitterAuth(firstname: String, lastname: String) = safeLaunch {
+        val params = TwitterCreateUseCase.Params(firstname, lastname)
+        execute(twitterCreateUseCase(params)) {
+            onCreateUser(it)
+        }
+    }
+
+    private fun onCreateUser(userDto: UserDto) = safeLaunch{
+        val params = CreateUserUseCase.Params(userDto)
+        execute(createUserUseCase(params)) {
+
+        }
+    }
+
+    private fun verify(phoneNumber: String) {
+        val options = PhoneAuthOptions.newBuilder()
+            .setPhoneNumber(phoneNumber)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .build()
+
+        PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "428043615289",
+    "project_id": "shapify",
+    "storage_bucket": "shapify.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428043615289:android:bfe3a62ca806b779dfe1e8",
+        "android_client_info": {
+          "package_name": "com.fitness.shapify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428043615289-dr3pirt4bkimbi4j0hnfk0cb0ep9pbdh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fitness.shapify",
+            "certificate_hash": "95d6cefdd6e7d6afe4964e6cb82d3e3796a656c8"
+          }
+        },
+        {
+          "client_id": "428043615289-tdqojdj9c2l4hsh384jo6rka295co6fk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVPlSmOQSa8nRhYG6xVS76PLe1ohH7JSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428043615289-tdqojdj9c2l4hsh384jo6rka295co6fk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

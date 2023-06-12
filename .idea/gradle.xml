@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/common/components" />
+            <option value="$PROJECT_DIR$/common/theme" />
+            <option value="$PROJECT_DIR$/common/utility" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/navigation" />
+            <option value="$PROJECT_DIR$/core/provider" />
+            <option value="$PROJECT_DIR$/data" />
+            <option value="$PROJECT_DIR$/data/cache" />
+            <option value="$PROJECT_DIR$/data/model" />
+            <option value="$PROJECT_DIR$/data/remote" />
+            <option value="$PROJECT_DIR$/data/repository" />
+            <option value="$PROJECT_DIR$/domain" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/account" />
+            <option value="$PROJECT_DIR$/features/account/account" />
+            <option value="$PROJECT_DIR$/features/account/account-api" />
+            <option value="$PROJECT_DIR$/features/analysis" />
+            <option value="$PROJECT_DIR$/features/analysis/analysis" />
+            <option value="$PROJECT_DIR$/features/analysis/analysis-api" />
+            <option value="$PROJECT_DIR$/features/authentication" />
+            <option value="$PROJECT_DIR$/features/authentication/auth" />
+            <option value="$PROJECT_DIR$/features/authentication/auth-api" />
+            <option value="$PROJECT_DIR$/features/home" />
+            <option value="$PROJECT_DIR$/features/home/home" />
+            <option value="$PROJECT_DIR$/features/home/home-api" />
+            <option value="$PROJECT_DIR$/features/onboarding" />
+            <option value="$PROJECT_DIR$/features/onboarding/onboarding" />
+            <option value="$PROJECT_DIR$/features/onboarding/onboarding-api" />
+            <option value="$PROJECT_DIR$/features/planner" />
+            <option value="$PROJECT_DIR$/features/planner/planner" />
+            <option value="$PROJECT_DIR$/features/planner/planner-api" />
+            <option value="$PROJECT_DIR$/features/profile" />
+            <option value="$PROJECT_DIR$/features/profile/profile" />
+            <option value="$PROJECT_DIR$/features/profile/profile-api" />
+            <option value="$PROJECT_DIR$/features/settings" />
+            <option value="$PROJECT_DIR$/features/settings/settings" />
+            <option value="$PROJECT_DIR$/features/settings/settings-api" />
+            <option value="$PROJECT_DIR$/features/tracking" />
+            <option value="$PROJECT_DIR$/features/tracking/tracking" />
+            <option value="$PROJECT_DIR$/features/tracking/tracking-api" />
+            <option value="$PROJECT_DIR$/features/training" />
+            <option value="$PROJECT_DIR$/features/training/training" />
+            <option value="$PROJECT_DIR$/features/training/training-api" />
+            <option value="$PROJECT_DIR$/features/welcome" />
+            <option value="$PROJECT_DIR$/features/welcome/welcome" />
+            <option value="$PROJECT_DIR$/features/welcome/welcome-api" />
+            <option value="$PROJECT_DIR$/libraries" />
+            <option value="$PROJECT_DIR$/libraries/framework" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
