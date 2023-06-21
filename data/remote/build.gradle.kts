@@ -1,6 +1,8 @@
 plugins {
+    kotlin("kapt")
     id ("com.android.library")
     id ("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android")
 }
 
 android{
@@ -28,4 +30,12 @@ android{
     kotlinOptions {
         jvmTarget = Configs.JvmTarget
     }
+}
+
+dependencies {
+    FRAMEWORK
+    MODEL
+
+    addHiltDependencies()
+    addNetworkDependencies()
 }

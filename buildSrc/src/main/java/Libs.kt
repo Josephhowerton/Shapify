@@ -24,6 +24,14 @@ object Versions{
     const val HiltViewModel = "1.0.0"
     const val Dagger2 = "2.44"
     const val GoogleHealthConnect = "1.0.0-alpha11"
+
+    const val Retrofit = "2.9.0"
+    const val OkHttpBom = "4.10.0"
+    const val Moshi = "1.14.0"
+    const val MoshiConverter = "2.9.0"
+    const val MoshiLazyAdapter = "2.2"
+    const val KotlinXSerialization = "1.3.2"
+    const val KotlinXSerializationRetrofit = "0.8.0"
 }
 
 object SupportLib {
@@ -82,6 +90,22 @@ object FirebaseLib {
     const val FirebaseAuth = "com.google.firebase:firebase-auth-ktx"
     const val FirebaseStore = "com.google.firebase:firebase-firestore-ktx"
     const val FirebaseGoogleAuth = "com.google.android.gms:play-services-auth:${Versions.GoogleFirebaseAuth}"
+}
+
+object NetworkLib{
+    const val Retrofit = "com.squareup.retrofit2:retrofit:${Versions.Retrofit}"
+
+    const val Moshi = "com.squareup.moshi:moshi-kotlin:${Versions.Moshi}"
+    const val MoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.MoshiConverter}"
+    const val MoshiCodegen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.Moshi}"
+    const val MoshiLazyAdapter = "com.serjltt.moshi:moshi-lazy-adapters:${Versions.MoshiLazyAdapter}"
+
+    const val OkHttpBom = "com.squareup.okhttp3:okhttp-bom:${Versions.OkHttpBom}"
+    const val OkHttp = "com.squareup.okhttp3:okhttp"
+    const val LoggingInterceptor = "com.squareup.okhttp3:logging-interceptor"
+
+    const val KotlinXSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.KotlinXSerialization}"
+    const val KotlinXSerializationRetrofit = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.KotlinXSerializationRetrofit}"
 }
 
 object UnitTest {

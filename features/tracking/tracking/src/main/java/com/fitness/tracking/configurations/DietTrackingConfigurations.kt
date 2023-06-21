@@ -16,10 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.fitness.model.enums.Configuration
-import com.fitness.model.remote.nutrition.MealItem
+import com.fitness.framework.enums.TimelineConfiguration
 import com.fitness.shapify.theme.PrimaryBlue
-import com.fitness.shapify.util.ScreenUtil
+import util.ScreenUtil
 import components.BlankItemComponent
 import components.DailyHealthItemComponent
 import components.HorizontalHealthTrackingSummary
@@ -50,18 +49,18 @@ private fun MonthlyDietTrackingPreview(){
 @Composable
 private fun DietTrackingMetricsPreview(){
     DietTrackingMetrics(
-        Configuration.DAILY,
+        TimelineConfiguration.DAILY,
         Modifier
             .fillMaxWidth()
             .wrapContentHeight())
 }
 
 @Composable
-fun DietTrackingConfiguartion(configuration: Configuration, modifier: Modifier) {
+fun DietTrackingConfiguartion(configuration: TimelineConfiguration, modifier: Modifier) {
     return when(configuration) {
-        Configuration.DAILY -> DailyDietTrackingConfiguration(modifier)
-        Configuration.WEEKLY -> WeeklyDietTrackingConfiguration(modifier)
-        Configuration.MONTHLY-> MonthlyDietTrackingConfiguration(modifier)
+        TimelineConfiguration.DAILY -> DailyDietTrackingConfiguration(modifier)
+        TimelineConfiguration.WEEKLY -> WeeklyDietTrackingConfiguration(modifier)
+        TimelineConfiguration.MONTHLY-> MonthlyDietTrackingConfiguration(modifier)
     }
 }
 
@@ -74,7 +73,7 @@ private fun DailyDietTrackingConfiguration(modifier: Modifier) =
             mealsRef,
         ) = createRefs()
 
-        DietTrackingMetrics(configuration = Configuration.WEEKLY,
+        DietTrackingMetrics(configuration = TimelineConfiguration.WEEKLY,
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
@@ -89,7 +88,7 @@ private fun DailyDietTrackingConfiguration(modifier: Modifier) =
                 top.linkTo(dietTrackingMetricsRef.bottom)
             })
 
-        DietTrackingList(mealPlan = listOf(), showAddMore = true, configuration = Configuration.DAILY, modifier = Modifier
+        DietTrackingList(mealPlan = listOf(), showAddMore = true, configuration = TimelineConfiguration.DAILY, modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(5.dp)
@@ -109,7 +108,7 @@ private fun WeeklyDietTrackingConfiguration(modifier: Modifier) =
             mealsRef,
         ) = createRefs()
 
-        DietTrackingMetrics(configuration = Configuration.WEEKLY,
+        DietTrackingMetrics(configuration = TimelineConfiguration.WEEKLY,
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
@@ -125,7 +124,7 @@ private fun WeeklyDietTrackingConfiguration(modifier: Modifier) =
                 top.linkTo(dietTrackingMetricsRef.bottom)
             })
 
-        DietTrackingList(mealPlan = listOf(), showAddMore = true, configuration = Configuration.WEEKLY, modifier = Modifier
+        DietTrackingList(mealPlan = listOf(), showAddMore = true, configuration = TimelineConfiguration.WEEKLY, modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(5.dp)
@@ -144,7 +143,7 @@ private fun MonthlyDietTrackingConfiguration(modifier: Modifier) = ConstraintLay
         mealsRef,
     ) = createRefs()
 
-    DietTrackingMetrics(configuration = Configuration.MONTHLY,
+    DietTrackingMetrics(configuration = TimelineConfiguration.MONTHLY,
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
@@ -159,7 +158,7 @@ private fun MonthlyDietTrackingConfiguration(modifier: Modifier) = ConstraintLay
             top.linkTo(dietTrackingMetricsRef.bottom)
         })
 
-    DietTrackingList(mealPlan = listOf(), showAddMore = false, configuration = Configuration.MONTHLY, modifier = Modifier
+    DietTrackingList(mealPlan = listOf(), showAddMore = false, configuration = TimelineConfiguration.MONTHLY, modifier = Modifier
         .fillMaxWidth()
         .wrapContentHeight()
         .padding(5.dp)
@@ -172,7 +171,7 @@ private fun MonthlyDietTrackingConfiguration(modifier: Modifier) = ConstraintLay
 }
 
 @Composable
-private fun DietTrackingMetrics(configuration: Configuration, modifier: Modifier) = ConstraintLayout(modifier = modifier) {
+private fun DietTrackingMetrics(configuration: TimelineConfiguration, modifier: Modifier) = ConstraintLayout(modifier = modifier) {
     val (caloriesSummaryRef,
         carbSummaryRef,
         fatSummaryRef,
@@ -265,7 +264,7 @@ private fun DietTrackingMetrics(configuration: Configuration, modifier: Modifier
 }
 
 @Composable
-private fun DietTrackingList(mealPlan: List<MealItem>, showAddMore: Boolean, configuration: Configuration, modifier: Modifier){
+private fun DietTrackingList(mealPlan: List<Any>, showAddMore: Boolean, configuration: TimelineConfiguration, modifier: Modifier){
 
     Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceBetween,
         modifier = modifier
@@ -288,10 +287,10 @@ private fun DietTrackingList(mealPlan: List<MealItem>, showAddMore: Boolean, con
 }
 
 @Composable
-private fun AddHealthItem(mealPlan: List<MealItem>, configuration: Configuration) {
+private fun AddHealthItem(mealPlan: List<Any>, configuration: TimelineConfiguration) {
     return when(configuration){
-        Configuration.DAILY -> DailyHealthItemComponent(mealItem = mealPlan, modifier =  Modifier.padding(10.dp))
-        Configuration.WEEKLY -> WeeklyHealthItemComponent(mealItem = mealPlan, modifier = Modifier.padding(10.dp))
-        Configuration.MONTHLY-> MonthlyHealthItemComponent(mealItem = mealPlan, modifier =  Modifier.padding(10.dp))
+        TimelineConfiguration.DAILY -> DailyHealthItemComponent(mealItem = mealPlan, modifier =  Modifier.padding(10.dp))
+        TimelineConfiguration.WEEKLY -> WeeklyHealthItemComponent(mealItem = mealPlan, modifier = Modifier.padding(10.dp))
+        TimelineConfiguration.MONTHLY-> MonthlyHealthItemComponent(mealItem = mealPlan, modifier =  Modifier.padding(10.dp))
     }
 }

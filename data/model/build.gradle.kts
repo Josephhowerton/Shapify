@@ -1,6 +1,8 @@
 plugins {
     id ("com.android.library")
     id ("org.jetbrains.kotlin.android")
+    id ("kotlin-parcelize")
+    kotlin("kapt")
 }
 
 android{
@@ -32,6 +34,8 @@ android{
 
 
 dependencies{
+    FRAMEWORK
     addExerciseDependencies()
     addFirebaseDependencies()
+    addNetworkDependencies()
 }

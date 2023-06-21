@@ -43,7 +43,6 @@ dependencies {
     addCommonDependencies()
     addComposeDependencies()
 
-    addCommonModuleDependencies()
     addCoreModuleDependencies()
 
     addNavigationDependencies()

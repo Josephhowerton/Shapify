@@ -54,5 +54,4 @@ dependencies {
     addFeatureApiDependencies()
 
     addCoreModuleDependencies()
-    addCommonModuleDependencies()
 }

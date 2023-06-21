@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.fitness.model.enums.Configuration
+import com.fitness.framework.enums.TimelineConfiguration
 import com.fitness.tracking.configurations.DietTrackingConfiguartion
 import components.DailyWeeklyMonthlyButtonComponent
 
@@ -39,7 +39,7 @@ fun HealthTrackingScreen() = Column(
         val (screenTitleRef, timelineRef, configurationRef) = createRefs()
 
         var configuration by remember {
-            mutableStateOf(Configuration.DAILY)
+            mutableStateOf(TimelineConfiguration.DAILY)
         }
 
         Text(text = "Diet Tracking", fontSize = 24.sp, modifier = Modifier

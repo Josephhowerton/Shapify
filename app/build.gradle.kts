@@ -28,6 +28,13 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+
+            buildConfigField("String", "EXERCISE_BASE_URL", "\"${Configs.Exercise.BASE_URL}\"")
+            buildConfigField("String", "NUTRITION_BASE_URL", "\"${Configs.Nutrition.BASE_URL}\"")
+        }
+        debug {
+            buildConfigField("String", "EXERCISE_BASE_URL", "\"${Configs.Exercise.BASE_URL}\"")
+            buildConfigField("String", "NUTRITION_BASE_URL", "\"${Configs.Nutrition.BASE_URL}\"")
         }
     }
     compileOptions {
@@ -40,6 +47,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     composeOptions {
@@ -78,7 +86,6 @@ dependencies {
     addFeatureApiDependencies()
 
     addCoreModuleDependencies()
-    addCommonModuleDependencies()
     addFeatureModuleDependencies()
 
 }

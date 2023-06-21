@@ -9,7 +9,7 @@ import com.fitness.authentication.di.component.DaggerLogoutComponent
 import com.fitness.authentication.logout.Logout
 import com.fitness.authentication.logout.LogoutEvent
 import com.fitness.framework.auth.AuthStateManager
-import com.fitness.framework.auth.AuthState
+import com.fitness.framework.enums.AuthState
 import com.fitness.framework.extensions.cast
 import com.fitness.framework.viewmodel.injectedViewModel
 import com.fitness.navigation.Destinations

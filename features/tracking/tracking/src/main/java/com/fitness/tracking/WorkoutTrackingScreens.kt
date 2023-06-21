@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.fitness.model.enums.Configuration
+import com.fitness.framework.enums.TimelineConfiguration
 import com.fitness.tracking.configurations.DailyWorkOutTrackingConfiguration
 import com.fitness.tracking.configurations.MonthlyWorkOutTrackingConfiguration
 import com.fitness.tracking.configurations.WeeklyWorkOutTrackingConfiguration
@@ -36,7 +36,7 @@ fun WorkoutTrackingScreen() = Column(Modifier.fillMaxSize().verticalScroll(remem
         val (screenTitleRef, timelineRef, configurationRef) = createRefs()
 
         var configuration by remember {
-            mutableStateOf(Configuration.DAILY)
+            mutableStateOf(TimelineConfiguration.DAILY)
         }
 
         Text(text = "Workout Tracking", fontSize = 24.sp, modifier = Modifier
@@ -66,9 +66,9 @@ fun WorkoutTrackingScreen() = Column(Modifier.fillMaxSize().verticalScroll(remem
         }
 
         when(configuration) {
-            Configuration.DAILY -> DailyWorkOutTrackingConfiguration(modifier)
-            Configuration.WEEKLY -> WeeklyWorkOutTrackingConfiguration(modifier)
-            Configuration.MONTHLY-> MonthlyWorkOutTrackingConfiguration(modifier)
+            TimelineConfiguration.DAILY -> DailyWorkOutTrackingConfiguration(modifier)
+            TimelineConfiguration.WEEKLY -> WeeklyWorkOutTrackingConfiguration(modifier)
+            TimelineConfiguration.MONTHLY-> MonthlyWorkOutTrackingConfiguration(modifier)
         }
     }
 }

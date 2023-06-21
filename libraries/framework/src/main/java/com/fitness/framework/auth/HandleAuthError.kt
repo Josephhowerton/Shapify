@@ -1,6 +1,7 @@
 package com.fitness.framework.auth
 
 import com.fitness.framework.R
+import com.fitness.framework.enums.AuthUserCollisionCodes
 import com.fitness.framework.extensions.Failure
 import com.google.firebase.auth.FirebaseAuthActionCodeException
 import com.google.firebase.auth.FirebaseAuthEmailException

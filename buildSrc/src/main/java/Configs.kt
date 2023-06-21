@@ -53,10 +53,10 @@ object Configs {
 
 
     object Exercise {
-        const val BASE_URL = "https://zylalabs.com/api/392/"
+        const val BASE_URL = "https://zylalabs.com/api/392/exercise+database+api/"
     }
 
     object Nutrition {
-        const val BASE_URL = ""
+        const val BASE_URL = "https://api.edamam.com/api/food-database/v2/"
     }
 }

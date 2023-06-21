@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.fitness.home.HomeEntry
-import com.fitness.home.com.HomeScreen
+import com.fitness.home.HomeScreen
 import com.fitness.navigation.Destinations
 import javax.inject.Inject
 

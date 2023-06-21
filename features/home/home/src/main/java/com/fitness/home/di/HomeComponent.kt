@@ -8,5 +8,5 @@ import dagger.Component
 @FeatureScoped
 @Component
 interface HomeComponent {
-    val viewModel: HomeViewModel
+    val homeViewModel: HomeViewModel
 }

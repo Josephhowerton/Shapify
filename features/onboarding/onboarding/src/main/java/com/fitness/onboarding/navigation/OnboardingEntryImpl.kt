@@ -4,13 +4,11 @@ package com.fitness.onboarding.navigation
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import com.fitness.framework.auth.AuthState
+import com.fitness.framework.enums.AuthState
 import com.fitness.framework.auth.AuthStateManager
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.navigation
-import com.fitness.home.HomeEntry
 import com.fitness.navigation.Destinations
-import com.fitness.navigation.find
 import com.fitness.onboarding.OnboardingEntry
 import com.fitness.onboarding.OnboardingScreenOne
 import com.fitness.onboarding.OnboardingScreenThree

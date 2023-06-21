@@ -101,6 +101,23 @@ fun DependencyHandler.addDagger2Dependencies(){
     kapt(Dagger2Lib.Dagger2Compiler)
 }
 
+fun DependencyHandler.addNetworkDependencies(){
+    implementation(NetworkLib.Retrofit)
+
+    implementation(NetworkLib.Moshi)
+    implementation(NetworkLib.MoshiConverter)
+    kapt(NetworkLib.MoshiCodegen)
+    implementation(NetworkLib.MoshiLazyAdapter)
+
+    implementation(platform(NetworkLib.OkHttpBom))
+    implementation(NetworkLib.OkHttp)
+    implementation(NetworkLib.LoggingInterceptor)
+
+    implementation(NetworkLib.KotlinXSerialization)
+    implementation(NetworkLib.KotlinXSerializationRetrofit)
+}
+
+
 fun DependencyHandler.addUnitTestDependencies() {
     implementation(UnitTest.JUnit)
 }
@@ -114,10 +131,10 @@ fun DependencyHandler.addAndroidTestDependencies() {
 
 val DependencyHandler.CRASHLYTICS get() = implementation(FirebaseLib.FirebaseCrashlytics)
 
-val DependencyHandler.COMPONENTS get() = implementation(project(":common:components"))
-val DependencyHandler.THEME get() = implementation(project(":common:theme"))
-val DependencyHandler.UTILITY get() = implementation(project(":common:utility"))
-
+val DependencyHandler.COMPONENTS get() = implementation(project(":core:components"))
+val DependencyHandler.THEME get() = implementation(project(":core:theme"))
+val DependencyHandler.UTILITY get() = implementation(project(":core:utility"))
+val DependencyHandler.DOMAIN get() = implementation(project(":core:domain"))
 val DependencyHandler.NAVIGATION get() = implementation(project(":core:navigation"))
 val DependencyHandler.PROVIDER get() = implementation(project(":core:provider"))
 
@@ -125,8 +142,6 @@ val DependencyHandler.CACHE get() = implementation(project(":data:cache"))
 val DependencyHandler.MODEL get() = implementation(project(":data:model"))
 val DependencyHandler.REPOSITORY get() = implementation(project(":data:repository"))
 val DependencyHandler.REMOTE get() = implementation(project(":data:remote"))
-
-val DependencyHandler.DOMAIN get() = implementation(project(":domain"))
 
 val DependencyHandler.ACCOUNT get() = implementation(project(":features:account:account"))
 val DependencyHandler.ANALYSIS get() = implementation(project(":features:analysis:analysis"))
@@ -154,15 +169,13 @@ val DependencyHandler.WELCOME_API get() = api(project(":features:welcome:welcome
 
 val DependencyHandler.FRAMEWORK get() = api(project(":libraries:framework"))
 
-fun DependencyHandler.addCommonModuleDependencies() {
-    COMPONENTS
-    THEME
-    UTILITY
-}
-
 fun DependencyHandler.addCoreModuleDependencies(){
+    COMPONENTS
+    DOMAIN
     NAVIGATION
     PROVIDER
+    THEME
+    UTILITY
 }
 
 fun DependencyHandler.addDataModuleDependencies() {

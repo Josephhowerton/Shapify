@@ -48,7 +48,6 @@ dependencies {
     addComposeDependencies()
 
     addCoreModuleDependencies()
-    addCommonModuleDependencies()
 
     addNavigationDependencies()
     addFeatureApiDependencies()

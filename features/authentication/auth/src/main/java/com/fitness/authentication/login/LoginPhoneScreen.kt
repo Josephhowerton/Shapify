@@ -1,6 +1,5 @@
 package com.fitness.authentication.login
 
-import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -19,12 +18,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.fitness.framework.auth.AuthFailure
+import com.fitness.framework.extensions.Dark
+import com.fitness.framework.extensions.Light
 import com.fitness.framework.extensions.cast
 import com.fitness.framework.state.BaseViewState
 import com.fitness.shapify.theme.PrimaryBlue
@@ -38,15 +38,8 @@ import widget.EmptyScreen
 import widget.ErrorScreen
 import widget.LoadingScreen
 
-@Preview(
-    name = "Light",
-    showBackground = true
-)
-@Preview(
-    name = "Dark",
-    showBackground = true,
-    uiMode = Configuration.UI_MODE_NIGHT_YES
-)
+@Dark
+@Light
 @Composable
 private fun LoginPreview() = ShapifyTheme{
     Surface {
@@ -81,7 +74,7 @@ fun LoginWithPhoneScreen(
             val failure = uiState.cast<BaseViewState.Error>().throwable as AuthFailure
 
             ErrorScreen(title = failure.title, description = failure.description) {
-                onErrorEvent.invoke(failure)
+                onErrorEvent(failure)
             }
         }
         is BaseViewState.Loading -> {

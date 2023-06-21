@@ -1,6 +1,10 @@
+
+import java.util.Properties
+
 plugins {
     id ("com.android.library")
     id ("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android{
@@ -21,6 +25,7 @@ android{
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -44,4 +49,5 @@ dependencies{
     addFirebaseDependencies()
     addNavigationDependencies()
     addCoroutinesDependencies()
+    addNetworkDependencies()
 }

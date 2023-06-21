@@ -15,8 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.fitness.model.enums.Configuration
-import com.fitness.model.remote.nutrition.MealItem
+import com.fitness.framework.enums.TimelineConfiguration
 import com.fitness.shapify.theme.PrimaryBlue
 import components.BlankItemComponent
 import components.DailyHealthItemComponent
@@ -70,7 +69,7 @@ fun DailyWorkOutTrackingConfiguration(modifier: Modifier){
         )
 
         TimelineButtonComponent(
-            configuration = Configuration.DAILY,
+            configuration = TimelineConfiguration.DAILY,
             modifier = Modifier.constrainAs(dateRef) {
                 top.linkTo(metricSummaryRef.bottom, margin = 15.dp)
                 start.linkTo(parent.start)
@@ -87,7 +86,7 @@ fun DailyWorkOutTrackingConfiguration(modifier: Modifier){
             }
         )
 
-        WorkoutTrackingList(mealPlan = listOf(), showAddMore = true, configuration = Configuration.DAILY, modifier = Modifier
+        WorkoutTrackingList(mealPlan = listOf(), showAddMore = true, configuration = TimelineConfiguration.DAILY, modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(5.dp)
@@ -120,7 +119,7 @@ fun WeeklyWorkOutTrackingConfiguration(modifier: Modifier){
         )
 
         TimelineButtonComponent(
-            configuration = Configuration.WEEKLY,
+            configuration = TimelineConfiguration.WEEKLY,
             modifier = Modifier.constrainAs(dateRef) {
                 top.linkTo(metricSummaryRef.bottom, margin = 15.dp)
                 start.linkTo(parent.start)
@@ -137,7 +136,7 @@ fun WeeklyWorkOutTrackingConfiguration(modifier: Modifier){
             }
         )
 
-        WorkoutTrackingList(mealPlan = listOf(), showAddMore = true, configuration = Configuration.WEEKLY, modifier = Modifier
+        WorkoutTrackingList(mealPlan = listOf(), showAddMore = true, configuration = TimelineConfiguration.WEEKLY, modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(5.dp)
@@ -169,7 +168,7 @@ fun MonthlyWorkOutTrackingConfiguration(modifier: Modifier){
             })
 
         TimelineButtonComponent(
-            configuration = Configuration.WEEKLY,
+            configuration = TimelineConfiguration.WEEKLY,
             modifier = Modifier.constrainAs(dateRef) {
                 top.linkTo(metricSummaryRef.bottom, margin = 15.dp)
                 start.linkTo(parent.start)
@@ -185,7 +184,7 @@ fun MonthlyWorkOutTrackingConfiguration(modifier: Modifier){
                 top.linkTo(dateRef.bottom)
             })
 
-        WorkoutTrackingList(mealPlan = listOf(), showAddMore = false, configuration = Configuration.MONTHLY, modifier = Modifier
+        WorkoutTrackingList(mealPlan = listOf(), showAddMore = false, configuration = TimelineConfiguration.MONTHLY, modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(5.dp)
@@ -288,7 +287,7 @@ private fun WorkoutMetricSummary(modifier: Modifier) {
 }
 
 @Composable
-private fun WorkoutTrackingList(mealPlan: List<MealItem>, showAddMore: Boolean, configuration: Configuration, modifier: Modifier){
+private fun WorkoutTrackingList(mealPlan: List<Any>, showAddMore: Boolean, configuration: TimelineConfiguration, modifier: Modifier){
 
     Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceBetween,
         modifier = modifier
@@ -311,10 +310,10 @@ private fun WorkoutTrackingList(mealPlan: List<MealItem>, showAddMore: Boolean, 
 }
 
 @Composable
-private fun AddWorkoutItem(mealPlan: List<MealItem>, configuration: Configuration) {
+private fun AddWorkoutItem(mealPlan: List<Any>, configuration: TimelineConfiguration) {
     return when(configuration){
-        Configuration.DAILY -> DailyHealthItemComponent(mealItem = mealPlan, modifier =  Modifier.padding(10.dp))
-        Configuration.WEEKLY -> WeeklyHealthItemComponent(mealItem = mealPlan, modifier = Modifier.padding(10.dp))
-        Configuration.MONTHLY-> MonthlyHealthItemComponent(mealItem = mealPlan, modifier =  Modifier.padding(10.dp))
+        TimelineConfiguration.DAILY -> DailyHealthItemComponent(mealItem = mealPlan, modifier =  Modifier.padding(10.dp))
+        TimelineConfiguration.WEEKLY -> WeeklyHealthItemComponent(mealItem = mealPlan, modifier = Modifier.padding(10.dp))
+        TimelineConfiguration.MONTHLY-> MonthlyHealthItemComponent(mealItem = mealPlan, modifier =  Modifier.padding(10.dp))
     }
 }

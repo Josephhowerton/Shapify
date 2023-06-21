@@ -1,7 +1,6 @@
 package com.fitness.authentication.create
 
 import android.util.Patterns
-import com.fitness.authentication.login.LoginState
 import com.fitness.framework.auth.handleAuthFailure
 import com.fitness.framework.auth.passwordVerification
 import com.fitness.framework.state.BaseViewState
@@ -14,8 +13,6 @@ import com.fitness.remote.usecase.auth.create.TwitterCreateUseCase
 import com.fitness.remote.usecase.user.CreateUserUseCase
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -138,12 +135,10 @@ class CreateAccountViewModel @Inject constructor(
         }
     }
 
-    private fun onCreateUser(userDto: UserDto) = safeLaunch{
-        val params = CreateUserUseCase.Params(userDto)
-        execute(createUserUseCase(params)) {
-            if(it){
-                setState(BaseViewState.Complete)
-            }
+    private fun onCreateUser(firebaseUser: UserDto) = safeLaunch{
+        val params = CreateUserUseCase.Params(firebaseUser)
+        call(createUserUseCase(params)) {
+            setState(BaseViewState.Complete)
         }
     }
 

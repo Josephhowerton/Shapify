@@ -35,6 +35,8 @@ android{
 dependencies {
     CACHE
     MODEL
+    REMOTE
 
     addHiltDependencies()
+    addFirebaseDependencies()
 }
