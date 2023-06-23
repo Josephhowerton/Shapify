@@ -45,8 +45,9 @@ import com.google.maps.android.compose.MapUiSettings
 import com.google.maps.android.compose.Polyline
 import com.google.maps.android.compose.rememberCameraPositionState
 import components.CircleProgressComponent
-import components.HorizontalHealthTrackingSummary
-import components.TimerComponent
+import components.HealthSummaryComponent
+import components.HealthSummaryConfiguration
+import components.IntervalTimerComponent
 import components.TimerComponentData
 
 @Preview
@@ -93,11 +94,15 @@ fun IntervalModeScreen() = ShapifyTheme {
         val bottomGuideline = createGuidelineFromTop(.75f)
         val (timerRef, caloriesRef, nextWorkOutRef, nextWorkOutImageRef) = createRefs()
 
-        TimerComponent(workOuts, color = PrimaryBlue, Modifier.constrainAs(timerRef){
-            start.linkTo(parent.start)
-            end.linkTo(parent.end)
-            top.linkTo(topGuideline)
-        }) {
+        IntervalTimerComponent(
+            intervals = workOuts,
+            color = PrimaryBlue,
+            modifier = Modifier.constrainAs(timerRef) {
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+                top.linkTo(topGuideline)
+            }
+        ) {
             nextWorkOut = if((it + 1) > workOuts.lastIndex){
                 "Complete"
             } else{
@@ -108,12 +113,8 @@ fun IntervalModeScreen() = ShapifyTheme {
         val currentCalories = 1000
         val maxCalories = 18000
 
-        HorizontalHealthTrackingSummary(
-            title = "Calories Burned",
-            description = "$currentCalories calories out of $maxCalories",
-            isDataDisplayed = true,
-            progress = 500f/700f,
-            progressBarColor = PrimaryBlue,
+        HealthSummaryComponent(
+            configuration = HealthSummaryConfiguration.HORIZONTAL,
             modifier = Modifier.constrainAs(caloriesRef){
                 start.linkTo(parent.start, 40.dp)
                 end.linkTo(parent.end, 40.dp)
@@ -219,7 +220,7 @@ fun RunningModeScreen() = Box(modifier = Modifier.fillMaxSize()) {
             bottom.linkTo(caloriesBurnedRef.top, 10.dp)
         })
 
-        CircleProgressComponent(false, progress = 1f, progressColor = PrimaryBlue, canvasSize = 100, modifier = Modifier.constrainAs(caloriesBurnedRef){
+        CircleProgressComponent(isTimer = false, progress = 1.0, progressColor = PrimaryBlue, canvasSize = 100, modifier = Modifier.constrainAs(caloriesBurnedRef){
             start.linkTo(caloriesBurnedTitleRef.start)
             end.linkTo(caloriesBurnedTitleRef.end)
             bottom.linkTo(bottomGuidelineHorizontal)
@@ -238,7 +239,7 @@ fun RunningModeScreen() = Box(modifier = Modifier.fillMaxSize()) {
             bottom.linkTo(distanceRef.top, 10.dp)
         })
 
-        CircleProgressComponent(false, progress = 1f, progressColor = PrimaryBlue, canvasSize = 100, modifier = Modifier.constrainAs(distanceRef){
+        CircleProgressComponent(isTimer = false, progress = 1.0, progressColor = PrimaryBlue, canvasSize = 100, modifier = Modifier.constrainAs(distanceRef){
             start.linkTo(distanceTitleRef.start)
             end.linkTo(distanceTitleRef.end)
             bottom.linkTo(bottomGuidelineHorizontal)
@@ -304,7 +305,7 @@ fun StrengthTrainingModeScreen() = Box(modifier = Modifier.fillMaxSize()) {
             top.linkTo(midGuidelineHorizontal)
         })
 
-        CircleProgressComponent(false, progress = 1f, progressColor = PrimaryBlue, canvasSize = 100, modifier = Modifier.constrainAs(caloriesBurnedRef){
+        CircleProgressComponent(isTimer = false, progress = 1.0, progressColor = PrimaryBlue, canvasSize = 100, modifier = Modifier.constrainAs(caloriesBurnedRef){
             start.linkTo(caloriesBurnedTitleRef.start)
             end.linkTo(caloriesBurnedTitleRef.end)
             top.linkTo(caloriesBurnedTitleRef.bottom, 10.dp)

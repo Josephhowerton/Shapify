@@ -58,32 +58,32 @@ fun DailyHealthItemComponent(modifier: Modifier = Modifier, mealItem: List<Any> 
                 ) {
                     MetricItemComponent(
                         metric = "C",
-                        "60g",
+                        quantity = "60g",
                         color = PrimaryBlue,
-                        25,
-                        Modifier.padding(5.dp)
+                        canvasSize = 25,
+                        modifier = Modifier.padding(5.dp)
                     )
                     MetricItemComponent(
-                        metric = "c",
-                        "60g",
+                        metric = "C",
+                        quantity = "60g",
                         color = PrimaryBlue,
-                        25,
-                        Modifier.padding(5.dp)
+                        canvasSize = 25,
+                        modifier = Modifier.padding(5.dp)
                     )
 
                     MetricItemComponent(
-                        metric = "f",
-                        "60g",
+                        metric = "C",
+                        quantity = "60g",
                         color = PrimaryBlue,
-                        25,
-                        Modifier.padding(5.dp)
+                        canvasSize = 25,
+                        modifier = Modifier.padding(5.dp)
                     )
                     MetricItemComponent(
-                        metric = "p",
-                        "60g",
+                        metric = "C",
+                        quantity = "60g",
                         color = PrimaryBlue,
-                        25,
-                        Modifier.padding(5.dp)
+                        canvasSize = 25,
+                        modifier = Modifier.padding(5.dp)
                     )
                 }
 
@@ -170,34 +170,34 @@ fun WeeklyHealthItemComponent(modifier: Modifier = Modifier, mealItem: List<Any>
                     Row(Modifier.padding(5.dp)) {
                         MetricItemComponent(
                             metric = "C",
-                            "60g",
+                            quantity = "60g",
                             color = PrimaryBlue,
-                            25,
-                            Modifier.padding(5.dp)
+                            canvasSize = 25,
+                            modifier = Modifier.padding(5.dp)
                         )
                         MetricItemComponent(
-                            metric = "c",
-                            "60g",
+                            metric = "C",
+                            quantity = "60g",
                             color = PrimaryBlue,
-                            25,
-                            Modifier.padding(5.dp)
+                            canvasSize = 25,
+                            modifier = Modifier.padding(5.dp)
                         )
                     }
 
                     Row(Modifier.padding(5.dp)) {
                         MetricItemComponent(
-                            metric = "f",
-                            "60g",
+                            metric = "C",
+                            quantity = "60g",
                             color = PrimaryBlue,
-                            25,
-                            Modifier.padding(5.dp)
+                            canvasSize = 25,
+                            modifier = Modifier.padding(5.dp)
                         )
                         MetricItemComponent(
-                            metric = "p",
-                            "60g",
+                            metric = "C",
+                            quantity = "60g",
                             color = PrimaryBlue,
-                            25,
-                            Modifier.padding(5.dp)
+                            canvasSize = 25,
+                            modifier = Modifier.padding(5.dp)
                         )
                     }
                 }
@@ -248,34 +248,34 @@ fun MonthlyHealthItemComponent(modifier: Modifier = Modifier, mealItem: List<Any
                     Row(Modifier.padding(5.dp)) {
                         MetricItemComponent(
                             metric = "C",
-                            "60g",
+                            quantity = "60g",
                             color = PrimaryBlue,
-                            25,
-                            Modifier.padding(5.dp)
+                            canvasSize = 25,
+                            modifier = Modifier.padding(5.dp)
                         )
                         MetricItemComponent(
-                            metric = "c",
-                            "60g",
+                            metric = "C",
+                            quantity = "60g",
                             color = PrimaryBlue,
-                            25,
-                            Modifier.padding(5.dp)
+                            canvasSize = 25,
+                            modifier = Modifier.padding(5.dp)
                         )
                     }
 
                     Row(Modifier.padding(5.dp)) {
                         MetricItemComponent(
-                            metric = "f",
-                            "60g",
+                            metric = "C",
+                            quantity = "60g",
                             color = PrimaryBlue,
-                            25,
-                            Modifier.padding(5.dp)
+                            canvasSize = 25,
+                            modifier = Modifier.padding(5.dp)
                         )
                         MetricItemComponent(
-                            metric = "p",
-                            "60g",
+                            metric = "C",
+                            quantity = "60g",
                             color = PrimaryBlue,
-                            25,
-                            Modifier.padding(5.dp)
+                            canvasSize = 25,
+                            modifier = Modifier.padding(5.dp)
                         )
                     }
                 }

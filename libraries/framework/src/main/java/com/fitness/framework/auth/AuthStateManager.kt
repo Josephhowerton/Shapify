@@ -1,7 +1,6 @@
 package com.fitness.framework.auth
 
 import android.util.Log
-import com.fitness.framework.enums.AuthState
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

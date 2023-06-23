@@ -4,7 +4,6 @@ import com.fitness.navigation.FeatureEntry
 import com.fitness.navigation.di.FeatureEntryKey
 import com.fitness.onboarding.OnboardingEntry
 import com.fitness.onboarding.navigation.OnboardingEntryImpl
-import com.fitness.welcome.WelcomeEntry
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

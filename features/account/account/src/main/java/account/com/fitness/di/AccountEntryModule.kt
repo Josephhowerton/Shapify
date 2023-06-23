@@ -1,6 +1,6 @@
 package account.com.fitness.di
 
-import account.com.fitness.AccountEntryImpl
+import account.com.fitness.navigation.AccountEntryImpl
 import com.fitness.account.AccountEntry
 import com.fitness.navigation.FeatureEntry
 import com.fitness.navigation.di.FeatureEntryKey

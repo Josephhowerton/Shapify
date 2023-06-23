@@ -19,8 +19,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.fitness.framework.enums.TimelineConfiguration
-import com.fitness.tracking.configurations.DietTrackingConfiguartion
-import components.DailyWeeklyMonthlyButtonComponent
+import com.fitness.tracking.configurations.DietTrackingConfiguration
+import components.TimelineComponent
 
 @Preview(showBackground = true)
 @Composable
@@ -51,7 +51,7 @@ fun HealthTrackingScreen() = Column(
                 end.linkTo(parent.end)
             })
 
-        DailyWeeklyMonthlyButtonComponent(configuration = configuration, modifier = Modifier.fillMaxWidth()
+        TimelineComponent(configuration = configuration, modifier = Modifier.fillMaxWidth()
             .wrapContentHeight()
             .constrainAs(timelineRef) {
                 top.linkTo(screenTitleRef.bottom)
@@ -62,7 +62,7 @@ fun HealthTrackingScreen() = Column(
             configuration = it
         }
 
-        DietTrackingConfiguartion(configuration = configuration, modifier = Modifier.constrainAs(configurationRef) {
+        DietTrackingConfiguration(configuration = configuration, modifier = Modifier.constrainAs(configurationRef) {
             top.linkTo(timelineRef.bottom)
             start.linkTo(parent.start)
             end.linkTo(parent.end)

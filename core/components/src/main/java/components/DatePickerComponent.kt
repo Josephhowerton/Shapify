@@ -24,7 +24,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -45,7 +44,7 @@ import java.util.Locale
 @Dark
 @Light
 @Composable
-fun TimelineButtonComponent(
+fun DatePickerComponent(
     modifier: Modifier = Modifier,
     configuration: TimelineConfiguration = TimelineConfiguration.DAILY,
     onDateChange: (date: Date) -> Unit = {}
@@ -68,17 +67,18 @@ fun TimelineButtonComponent(
 
                 Button(
                     onClick = { dateDialog.show() },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Transparent,
-                        contentColor = PrimaryWhite
-                    ),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
                     modifier = Modifier.constrainAs(dateRef) {
                         top.linkTo(parent.top, margin = 15.dp)
                         bottom.linkTo(dividerRef.top)
                         start.linkTo(parent.start)
                     }) {
 
-                    Text(text = df.format(date), fontSize = 18.sp)
+                    Text(
+                        text = df.format(date),
+                        fontSize = 18.sp
+                    )
+
                     Icon(
                         painter = painterResource(id = R.drawable.icon_drop_down),
                         contentDescription = "",
@@ -102,7 +102,6 @@ fun TimelineButtonComponent(
                 }
 
                 Divider(
-                    color = PrimaryWhite,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(1.dp)
@@ -121,8 +120,8 @@ fun TimelineButtonComponent(
 @Dark
 @Light
 @Composable
-private fun DateTimelineButton(
-    modifier: Modifier = Modifier,
+fun TimelineComponent(
+    modifier: Modifier = Modifier.fillMaxWidth(),
     configuration: TimelineConfiguration = TimelineConfiguration.WEEKLY,
     onClickButton: (config: TimelineConfiguration) -> Unit = {}) {
     ShapifyTheme {
@@ -130,22 +129,22 @@ private fun DateTimelineButton(
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceAround,
-                modifier = modifier
+                modifier = modifier.padding(2.dp)
             ) {
                 Button(onClick = { onClickButton(TimelineConfiguration.DAILY) },
                     border = BorderStroke(2.dp, if(configuration == TimelineConfiguration.DAILY) PrimaryBlue else DarkBlack),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent, contentColor = PrimaryWhite)
+                    colors = ButtonDefaults.buttonColors(containerColor = if(configuration == TimelineConfiguration.DAILY) PrimaryBlue else Color.Transparent)
                 ) {
                     Text(text = "Daily", fontSize = 18.sp)
                 }
                 Button(onClick = { onClickButton(TimelineConfiguration.WEEKLY) },
                     border = BorderStroke(2.dp, if(configuration == TimelineConfiguration.WEEKLY) PrimaryBlue else DarkBlack),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent, contentColor = PrimaryWhite)) {
+                    colors = ButtonDefaults.buttonColors(containerColor = if(configuration == TimelineConfiguration.WEEKLY) PrimaryBlue else Color.Transparent)) {
                     Text(text = "Weekly", fontSize = 18.sp)
                 }
                 Button(onClick = { onClickButton(TimelineConfiguration.MONTHLY) },
                     border = BorderStroke(2.dp, if(configuration == TimelineConfiguration.MONTHLY) PrimaryBlue else DarkBlack),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent, contentColor = PrimaryWhite)) {
+                    colors = ButtonDefaults.buttonColors(containerColor = if(configuration == TimelineConfiguration.MONTHLY) PrimaryBlue else Color.Transparent)) {
                     Text(text = "Monthly", fontSize = 18.sp)
                 }
             }

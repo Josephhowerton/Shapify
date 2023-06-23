@@ -1,7 +1,7 @@
 package com.fitness.model.cache.nutrition.recipes
 
-import com.fitness.model.cache.nutrition.TotalDailyEntity
-import com.fitness.model.cache.nutrition.TotalNutrientsEntity
+import com.fitness.model.cache.nutrition.shared.TotalDailyEntity
+import com.fitness.model.cache.nutrition.shared.TotalNutrientsEntity
 
 data class RecipeEntity(
     val calories: Int,

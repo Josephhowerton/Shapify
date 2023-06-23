@@ -63,7 +63,7 @@ val DarkOnError = PrimaryWhite
 val DarkErrorContainer = RedDarkVariant
 val DarkOnErrorContainer = RedLightVariant
 val DarkOutline = DarkBlack
-val DarkOutlineVariant = Grey
+val DarkOutlineVariant = PrimaryWhite
 
 val LightPrimaryColor = PrimaryBlue
 val LightOnPrimaryColor = DarkBlack
@@ -92,4 +92,4 @@ val LightOnError = DarkBlack
 val LightErrorContainer = RedDarkVariant
 val LightOnErrorContainer = RedLightVariant
 val LightOutline = PrimaryWhite
-val LightOutlineVariant = Grey
+val LightOutlineVariant = DarkBlack

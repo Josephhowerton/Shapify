@@ -11,7 +11,7 @@ import com.fitness.authentication.login.LoginEvent
 import com.fitness.authentication.login.LoginWithEmailScreen
 import com.fitness.authentication.login.LoginWithPhoneScreen
 import com.fitness.framework.auth.AuthStateManager
-import com.fitness.framework.enums.AuthState
+import com.fitness.framework.auth.AuthState
 import com.fitness.framework.extensions.cast
 import com.fitness.framework.viewmodel.injectedViewModel
 import com.fitness.navigation.Destinations

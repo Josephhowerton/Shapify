@@ -1,6 +1,6 @@
 package analysis.com.fitness.di
 
-import analysis.com.fitness.AnalysisEntryImpl
+import analysis.com.fitness.navigation.AnalysisEntryImpl
 import com.fitness.analysis.AnalysisEntry
 import com.fitness.navigation.FeatureEntry
 import com.fitness.navigation.di.FeatureEntryKey

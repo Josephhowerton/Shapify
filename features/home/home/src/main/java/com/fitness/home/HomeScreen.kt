@@ -1,9 +1,6 @@
 package com.fitness.home
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,12 +15,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -35,18 +29,16 @@ import com.fitness.framework.extensions.cast
 import com.fitness.framework.state.BaseViewState
 import com.fitness.home.viewmodel.HomeEvent
 import com.fitness.home.viewmodel.HomeState
-import com.fitness.model.domain.user.User
 import com.fitness.shapify.theme.PrimaryBlue
 import com.fitness.shapify.theme.PrimaryWhite
 import com.fitness.shapify.theme.ShapifyTheme
 import com.fitness.shapify.util.DateTimeUtil
-import util.ScreenUtil
 import com.fitness.theme.R
-import components.CircleProgressComponent
 import components.DetailedSummaryComponent
+import components.HealthSummaryComponent
+import components.HealthSummaryConfiguration
 import components.LongHealthComponent
-import components.SquareHealthSummaryComponent
-import components.WeightProgressBar
+import components.WeightProgressComponent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import widget.EmptyScreen
@@ -62,7 +54,7 @@ import java.util.Locale
 private fun HomeScreenPreview() {
     ShapifyTheme {
         Surface {
-            HomeScreen()
+            HomeContent ()
         }
     }
 }
@@ -82,8 +74,8 @@ fun HomeScreen(
 
         is BaseViewState.Data -> {
             HomeContent(
-                uiState = uiState.cast<BaseViewState.Data<HomeState>>().value,
-                onTriggerEvent
+//                uiState = uiState.cast<BaseViewState.Data<HomeState>>().value,
+//                onTriggerEvent
             )
         }
 
@@ -105,8 +97,8 @@ fun HomeScreen(
 
 @Composable
 fun HomeContent(
-    uiState: HomeState,
-    onTriggerEvent: (HomeEvent) -> Unit = {}
+//    uiState: HomeState,
+//    onTriggerEvent: (HomeEvent) -> Unit = {}
 ) = Column(Modifier.verticalScroll(state = rememberScrollState())) {
 
     ConstraintLayout(Modifier.fillMaxSize()) {
@@ -127,7 +119,7 @@ fun HomeContent(
         val currentWeight = 288.0
         val targetWeight = 290.0
 
-        WeightProgressBar(
+        WeightProgressComponent(
             startedWeight = startedWeight,
             currentWeight = currentWeight,
             targetWeight = targetWeight,
@@ -138,23 +130,6 @@ fun HomeContent(
                 end.linkTo(parent.end)
             }
         )
-
-        Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier
-            .padding(15.dp)
-            .constrainAs(weightMetricsRef) {
-                top.linkTo(weightProgressRef.bottom)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
-                width = Dimension.fillToConstraints
-            }) {
-
-            Text(
-                text = "Target: $targetWeight",
-                fontSize = 14.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(2.dp)
-            )
-        }
 
         Text(
             text = "Today",
@@ -191,31 +166,17 @@ fun HomeContent(
                 }
         )
 
-        val currentSteps = 1000
-        val totalSteps = 18000
-
-        SquareHealthSummaryComponent(R.drawable.icon_steps, "Steps",
-            "$currentSteps steps out of $totalSteps",
-            (currentSteps.toDouble() / totalSteps.toDouble()),
-            PrimaryBlue,
-            Modifier
-                .width(150.dp)
-                .height(150.dp)
-                .constrainAs(stepsRef) {
-                    top.linkTo(midGuideline, margin = 40.dp)
-                    start.linkTo(parent.start)
-                    end.linkTo(waterRef.start)
-                }
+        HealthSummaryComponent(configuration = HealthSummaryConfiguration.SQUARE, modifier = Modifier
+            .width(150.dp)
+            .height(150.dp)
+            .constrainAs(stepsRef) {
+                top.linkTo(midGuideline, margin = 40.dp)
+                start.linkTo(parent.start)
+                end.linkTo(waterRef.start)
+            }
         )
 
-        val currentLiterWater = 50
-        val totalLiterWater = 150
-
-        SquareHealthSummaryComponent(R.drawable.icon_water, "Water",
-            "$currentLiterWater liters of water out of $totalLiterWater",
-            (currentLiterWater.toDouble() / totalLiterWater.toDouble()),
-            PrimaryBlue,
-            Modifier
+        HealthSummaryComponent(configuration = HealthSummaryConfiguration.SQUARE, modifier = Modifier
                 .width(150.dp)
                 .height(150.dp)
                 .constrainAs(waterRef) {
@@ -225,14 +186,7 @@ fun HomeContent(
                 }
         )
 
-        val currentCaloriesIn = 1200
-        val maxCaloriesIn = 1800
-
-        SquareHealthSummaryComponent(R.drawable.icon_food, "Intake",
-            "$currentCaloriesIn calories consumed out of $maxCaloriesIn",
-            (currentCaloriesIn.toDouble() / maxCaloriesIn.toDouble()),
-            PrimaryBlue,
-            Modifier
+        HealthSummaryComponent(configuration = HealthSummaryConfiguration.SQUARE, modifier = Modifier
                 .width(150.dp)
                 .height(150.dp)
                 .constrainAs(caloriesInRef) {
@@ -242,14 +196,7 @@ fun HomeContent(
                 }
         )
 
-        val currentCaloriesBurned = 700
-        val targetCaloriesBurned = 1200
-
-        SquareHealthSummaryComponent(R.drawable.icon_fire, "Activity",
-            "$currentCaloriesBurned calories burned out of $targetCaloriesBurned",
-            (currentCaloriesBurned.toDouble() / targetCaloriesBurned.toDouble()),
-            PrimaryBlue,
-            Modifier
+        HealthSummaryComponent(configuration = HealthSummaryConfiguration.SQUARE, modifier = Modifier
                 .width(150.dp)
                 .height(150.dp)
                 .constrainAs(caloriesBurnRef) {

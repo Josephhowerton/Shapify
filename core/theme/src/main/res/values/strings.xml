@@ -59,4 +59,6 @@
     <string name="retry">Retry</string>
     <string name="we_are_sorry_title">We\'re sorry!</string>
     <string name="default_error_desc">Help us improve your experience by sending an error report</string>
+
+    <string name="target_weight_desc">Target: %.1f</string>
 </resources>

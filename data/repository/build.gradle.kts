@@ -7,11 +7,11 @@ plugins {
 
 android{
     namespace = "com.fitness.repository"
-    compileSdk = Configs.CompileSdk
+    compileSdk = config.Configs.CompileSdk
 
     defaultConfig {
-        minSdk = Configs.MinSdk
-        testInstrumentationRunner = Configs.AndroidJunitRunner
+        minSdk = config.Configs.MinSdk
+        testInstrumentationRunner = config.Configs.AndroidJunitRunner
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -23,12 +23,18 @@ android{
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = Configs.JvmTarget
+        jvmTarget = config.Configs.JvmTarget
+    }
+
+    hilt {
+        enableAggregatingTask = true
     }
 }
 

@@ -35,9 +35,11 @@ fun MetricItemComponent(
     ShapifyTheme {
         Surface {
 
-            Card(elevation = CardDefaults.cardElevation(3.dp),
+            Card(
+                elevation = CardDefaults.cardElevation(3.dp),
                 colors = CardDefaults.cardColors(containerColor = color),
-                modifier = Modifier.size(canvasSize.dp))
+                modifier = Modifier.size(canvasSize.dp)
+            )
             {
 
                 Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()){

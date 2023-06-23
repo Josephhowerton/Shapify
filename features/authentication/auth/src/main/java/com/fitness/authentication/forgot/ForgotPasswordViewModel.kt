@@ -1,14 +1,11 @@
 package com.fitness.authentication.forgot
 
 import android.util.Patterns
-import com.fitness.authentication.create.CreateAccountState
 import com.fitness.framework.auth.handleAuthFailure
 import com.fitness.framework.state.BaseViewState
 import com.fitness.framework.auth.passwordVerification
 import com.fitness.framework.viewmodel.IntentViewModel
 import com.fitness.remote.usecase.auth.login.ForgotPasswordUseCase
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 class ForgotPasswordViewModel @Inject constructor(

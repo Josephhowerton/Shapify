@@ -1,7 +1,6 @@
 package com.fitness.framework.auth
 
 import com.fitness.framework.R
-import com.fitness.framework.enums.AuthUserCollisionCodes
 import com.fitness.framework.extensions.Failure
 import com.google.firebase.auth.FirebaseAuthActionCodeException
 import com.google.firebase.auth.FirebaseAuthEmailException
@@ -42,11 +41,17 @@ fun Throwable.handleAuthFailure(): AuthFailure {
     return when (this) {
         is FirebaseAuthInvalidCredentialsException -> {
             this.errorCode
-            AuthFailure.UserError(title = R.string.incorrect_credentials, description = R.string.invalid_credentials_desc)
+            AuthFailure.UserError(
+                title = R.string.incorrect_credentials,
+                description = R.string.invalid_credentials_desc
+            )
         }
 
         is FirebaseAuthInvalidUserException -> {
-            AuthFailure.UserError(title = R.string.invalid_user, description = R.string.invalid_user_desc)
+            AuthFailure.UserError(
+                title = R.string.invalid_user,
+                description = R.string.invalid_user_desc
+            )
         }
 
         is FirebaseAuthUserCollisionException -> {
@@ -54,40 +59,67 @@ fun Throwable.handleAuthFailure(): AuthFailure {
         }
 
         is FirebaseAuthActionCodeException -> {
-            AuthFailure.SystemError(title = R.string.we_are_sorry, description = R.string.default_error_desc)
+            AuthFailure.SystemError(
+                title = R.string.we_are_sorry,
+                description = R.string.default_error_desc
+            )
         }
 
         is FirebaseAuthEmailException -> {
-            AuthFailure.SystemError(title = R.string.we_are_sorry, description = R.string.default_error_desc)
+            AuthFailure.SystemError(
+                title = R.string.we_are_sorry,
+                description = R.string.default_error_desc
+            )
         }
 
         is FirebaseAuthMissingActivityForRecaptchaException -> {
-            AuthFailure.SystemError(title = R.string.we_are_sorry, description = R.string.default_error_desc)
+            AuthFailure.SystemError(
+                title = R.string.we_are_sorry,
+                description = R.string.default_error_desc
+            )
         }
 
         is FirebaseAuthMultiFactorException -> {
-            AuthFailure.SystemError(title = R.string.we_are_sorry, description = R.string.default_error_desc)
+            AuthFailure.SystemError(
+                title = R.string.we_are_sorry,
+                description = R.string.default_error_desc
+            )
         }
 
         is FirebaseAuthRecentLoginRequiredException -> {
-            AuthFailure.SystemError(title = R.string.we_are_sorry, description = R.string.default_error_desc)
+            AuthFailure.SystemError(
+                title = R.string.we_are_sorry,
+                description = R.string.default_error_desc
+            )
         }
 
         is FirebaseAuthWebException -> {
-            AuthFailure.SystemError(title = R.string.we_are_sorry, description = R.string.default_error_desc)
+            AuthFailure.SystemError(
+                title = R.string.we_are_sorry,
+                description = R.string.default_error_desc
+            )
         }
 
         else -> {
-            AuthFailure.UnknownError(title = R.string.we_are_sorry, description = R.string.default_error_desc)
+            AuthFailure.UnknownError(
+                title = R.string.we_are_sorry,
+                description = R.string.default_error_desc
+            )
         }
     }
 }
 
 private fun handleUserCollisionException(code: String): AuthFailure {
     return if(code == AuthUserCollisionCodes.ERROR_EMAIL_ALREADY_IN_USE.name){
-        AuthFailure.SystemError(title = R.string.user_exist_email, description = R.string.user_collision_email_desc)
+        AuthFailure.SystemError(
+            title = R.string.user_exist_email,
+            description = R.string.user_collision_email_desc
+        )
     } else {
-        AuthFailure.SystemError(title = R.string.user_exist_phone, description = R.string.user_collision_phone_desc)
+        AuthFailure.SystemError(
+            title = R.string.user_exist_phone,
+            description = R.string.user_collision_phone_desc
+        )
     }
 }
 

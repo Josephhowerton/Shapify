@@ -1,3 +1,16 @@
+import config.AndroidTest
+import config.ComposeLib
+import config.CoroutineLib
+import config.Dagger2Lib
+import config.ExerciseLib
+import config.FirebaseLib
+import config.GoogleLib
+import config.HealthConnectLib
+import config.HiltLib
+import config.NavigationLib
+import config.NetworkLib
+import config.SupportLib
+import config.UnitTest
 import org.gradle.api.artifacts.Dependency
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.kotlin.dsl.project
@@ -116,8 +129,6 @@ fun DependencyHandler.addNetworkDependencies(){
     implementation(NetworkLib.KotlinXSerialization)
     implementation(NetworkLib.KotlinXSerializationRetrofit)
 }
-
-
 fun DependencyHandler.addUnitTestDependencies() {
     implementation(UnitTest.JUnit)
 }
@@ -131,6 +142,7 @@ fun DependencyHandler.addAndroidTestDependencies() {
 
 val DependencyHandler.CRASHLYTICS get() = implementation(FirebaseLib.FirebaseCrashlytics)
 
+val DependencyHandler.HEALTH_CONNECT get() = implementation(HealthConnectLib.HealthConnect)
 val DependencyHandler.COMPONENTS get() = implementation(project(":core:components"))
 val DependencyHandler.THEME get() = implementation(project(":core:theme"))
 val DependencyHandler.UTILITY get() = implementation(project(":core:utility"))

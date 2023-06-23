@@ -8,7 +8,7 @@ import com.fitness.auth.LoginEntry
 import com.fitness.welcome.WelcomeEntry
 import com.fitness.navigation.find
 import com.fitness.onboarding.OnboardingEntry
-import com.fitness.shapify.di.provider.LocalAppProvider
+import com.fitness.shapify.di.LocalAppProvider
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 
 

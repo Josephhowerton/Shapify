@@ -22,7 +22,7 @@ import com.fitness.framework.enums.TimelineConfiguration
 import com.fitness.tracking.configurations.DailyWorkOutTrackingConfiguration
 import com.fitness.tracking.configurations.MonthlyWorkOutTrackingConfiguration
 import com.fitness.tracking.configurations.WeeklyWorkOutTrackingConfiguration
-import components.DailyWeeklyMonthlyButtonComponent
+import components.TimelineComponent
 
 @Preview(showBackground = true)
 @Composable
@@ -48,7 +48,7 @@ fun WorkoutTrackingScreen() = Column(Modifier.fillMaxSize().verticalScroll(remem
                 end.linkTo(parent.end)
             })
 
-        DailyWeeklyMonthlyButtonComponent(configuration = configuration, modifier = Modifier.fillMaxWidth()
+        TimelineComponent(configuration = configuration, modifier = Modifier.fillMaxWidth()
             .wrapContentHeight()
             .constrainAs(timelineRef) {
                 top.linkTo(screenTitleRef.bottom)

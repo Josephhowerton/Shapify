@@ -7,11 +7,11 @@ plugins {
 
 android{
     namespace = "com.fitness.remote"
-    compileSdk = Configs.CompileSdk
+    compileSdk = config.Configs.CompileSdk
 
     defaultConfig {
-        minSdk = Configs.MinSdk
-        testInstrumentationRunner = Configs.AndroidJunitRunner
+        minSdk = config.Configs.MinSdk
+        testInstrumentationRunner = config.Configs.AndroidJunitRunner
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -28,7 +28,11 @@ android{
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = Configs.JvmTarget
+        jvmTarget = config.Configs.JvmTarget
+    }
+
+    hilt {
+        enableAggregatingTask = true
     }
 }
 

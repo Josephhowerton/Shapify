@@ -1,8 +1,8 @@
 package com.fitness.model.util.extensions
 
-import com.fitness.model.cache.exercise.SetsRepsEntity
-import com.fitness.model.cache.exercise.ExerciseEntity
-import com.fitness.model.cache.health.CaloriesBurnedEntity
+import com.fitness.model.cache.exercise.shared.SetsRepsEntity
+import com.fitness.model.cache.exercise.shared.ExerciseEntity
+import com.fitness.model.cache.health.connect.ActiveCaloriesBurnedEntity
 import com.fitness.model.domain.exercise.ExerciseItem
 import com.fitness.model.domain.exercise.Exercise
 import com.fitness.model.remote.exercise.ExerciseDto
@@ -32,11 +32,7 @@ fun ExerciseItem.toExerciseDto() =
     )
 
 //UnpickedItem to Picked Item
-fun ExerciseItem.toExerciseEntity(
-    sessionId: String,
-    setsReps: Map<Int, Int>,
-    caloriesBurned: Map<Int, Int>
-) =
+fun ExerciseItem.toExerciseEntity(sessionId: String) =
     ExerciseEntity(
         bodyPart = bodyPart,
         equipment = equipment,
@@ -45,8 +41,6 @@ fun ExerciseItem.toExerciseEntity(
         name = name,
         sessionId = sessionId,
         target = target,
-        setsRepsEntity = SetsRepsEntity(setsReps, mapOf()),
-        caloriesBurnedEntity = CaloriesBurnedEntity(caloriesBurned, mapOf())
     )
 
 //Picked Item to UnpickedItem
@@ -70,9 +64,7 @@ fun ExerciseEntity.toUserExercise() =
         id = id,
         name = name,
         sessionId = sessionId,
-        target = target,
-        setsReps = setsRepsEntity.toSetReps(),
-        caloriesBurned = caloriesBurnedEntity.toCaloriesBurned()
+        target = target
     )
 
 
@@ -85,7 +77,5 @@ fun Exercise.toExerciseEntity() =
         id = id,
         sessionId = sessionId,
         name = name,
-        target = target,
-        setsRepsEntity = setsReps.toSetRepsEntity(),
-        caloriesBurnedEntity = caloriesBurned.toCaloriesBurnedEntity()
+        target = target
     )

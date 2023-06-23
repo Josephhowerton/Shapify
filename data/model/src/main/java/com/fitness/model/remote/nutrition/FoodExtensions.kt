@@ -1,6 +1,6 @@
 package com.fitness.model.remote.nutrition
 
-import com.fitness.model.cache.nutrition.DietRestrictionsEntity
+import com.fitness.model.cache.nutrition.meals.DietRestrictionsEntity
 import com.fitness.model.cache.nutrition.food.FoodEntity
 import com.fitness.model.cache.nutrition.food.MeasureEntity
 import com.fitness.model.cache.nutrition.food.NutrientsEntity

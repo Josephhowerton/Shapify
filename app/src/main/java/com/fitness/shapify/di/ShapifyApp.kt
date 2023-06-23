@@ -1,7 +1,6 @@
 package com.fitness.shapify.di
 
 import android.app.Application
-import com.fitness.shapify.di.provider.AppProvider
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 

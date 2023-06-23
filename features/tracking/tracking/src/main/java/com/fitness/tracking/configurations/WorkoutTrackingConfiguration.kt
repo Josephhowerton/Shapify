@@ -16,13 +16,13 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.fitness.framework.enums.TimelineConfiguration
-import com.fitness.shapify.theme.PrimaryBlue
 import components.BlankItemComponent
+import components.HealthSummaryConfiguration
 import components.DailyHealthItemComponent
-import components.HorizontalHealthTrackingSummary
 import components.MonthlyHealthItemComponent
 import components.NoDataDisplayedItemComponent
-import components.TimelineButtonComponent
+import components.DatePickerComponent
+import components.HealthSummaryComponent
 import components.WeeklyHealthItemComponent
 
 @Preview
@@ -68,7 +68,7 @@ fun DailyWorkOutTrackingConfiguration(modifier: Modifier){
             }
         )
 
-        TimelineButtonComponent(
+        DatePickerComponent(
             configuration = TimelineConfiguration.DAILY,
             modifier = Modifier.constrainAs(dateRef) {
                 top.linkTo(metricSummaryRef.bottom, margin = 15.dp)
@@ -118,7 +118,7 @@ fun WeeklyWorkOutTrackingConfiguration(modifier: Modifier){
             }
         )
 
-        TimelineButtonComponent(
+        DatePickerComponent(
             configuration = TimelineConfiguration.WEEKLY,
             modifier = Modifier.constrainAs(dateRef) {
                 top.linkTo(metricSummaryRef.bottom, margin = 15.dp)
@@ -167,7 +167,7 @@ fun MonthlyWorkOutTrackingConfiguration(modifier: Modifier){
                 width = Dimension.fillToConstraints
             })
 
-        TimelineButtonComponent(
+        DatePickerComponent(
             configuration = TimelineConfiguration.WEEKLY,
             modifier = Modifier.constrainAs(dateRef) {
                 top.linkTo(metricSummaryRef.bottom, margin = 15.dp)
@@ -204,45 +204,34 @@ private fun WorkoutMetricSummary(modifier: Modifier) {
 
         val (workoutsCompletedRef, stepsCompletedRef, cardioCompletedRef, distanceCompletedRef, caloriesBurnedRef, dateRef) = createRefs()
 
-        val currentCalories = 1000
-        val maxCalories = 18000
 
-        
-        HorizontalHealthTrackingSummary(title = "Workouts Completed",
-            description = "$currentCalories calories out of $maxCalories",
-            true,
-            progress = .5f,
-            progressBarColor = PrimaryBlue,
-            modifier = Modifier
-                .padding(5.dp)
-                .wrapContentHeight()
+        //TODO(Add data for Workouts Completed)
+        HealthSummaryComponent(
+            configuration = HealthSummaryConfiguration.HORIZONTAL,
+            modifier = Modifier.padding(5.dp).wrapContentHeight()
                 .constrainAs(workoutsCompletedRef) {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     width = Dimension.fillToConstraints
-                })
+                }
+        )
 
-        HorizontalHealthTrackingSummary(title = "Steps",
-            description = "$currentCalories calories out of $maxCalories",
-            true,
-            progress = .5f,
-            progressBarColor = PrimaryBlue,
-            modifier = Modifier
-                .padding(5.dp)
-                .wrapContentHeight()
+        //TODO(Add data for Steps)
+        HealthSummaryComponent(
+            configuration = HealthSummaryConfiguration.HORIZONTAL,
+            modifier = Modifier.padding(5.dp).wrapContentHeight()
                 .constrainAs(stepsCompletedRef) {
                     top.linkTo(workoutsCompletedRef.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     width = Dimension.fillToConstraints
-                })
+                }
+        )
 
-        HorizontalHealthTrackingSummary(title = "Cardio",
-            description = "$currentCalories calories out of $maxCalories",
-            true,
-            progress = .5f,
-            progressBarColor = PrimaryBlue,
+        //TODO(Add data for Cardio)
+        HealthSummaryComponent(
+            configuration = HealthSummaryConfiguration.HORIZONTAL,
             modifier = Modifier
                 .padding(5.dp)
                 .wrapContentHeight()
@@ -251,13 +240,12 @@ private fun WorkoutMetricSummary(modifier: Modifier) {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     width = Dimension.fillToConstraints
-                })
+                }
+        )
 
-        HorizontalHealthTrackingSummary(title = "Distance",
-            description = "$currentCalories calories out of $maxCalories",
-            true,
-            progress = .5f,
-            progressBarColor = PrimaryBlue,
+        //TODO(Add data for Distance)
+        HealthSummaryComponent(
+            configuration = HealthSummaryConfiguration.HORIZONTAL,
             modifier = Modifier
                 .padding(5.dp)
                 .wrapContentHeight()
@@ -266,13 +254,12 @@ private fun WorkoutMetricSummary(modifier: Modifier) {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     width = Dimension.fillToConstraints
-                })
+                }
+        )
 
-        HorizontalHealthTrackingSummary(title = "Calories Burned",
-            description = "$currentCalories calories out of $maxCalories",
-            true,
-            progress = .5f,
-            progressBarColor = PrimaryBlue,
+        //TODO(Add data for Calories Burned)
+        HealthSummaryComponent(
+            configuration = HealthSummaryConfiguration.HORIZONTAL,
             modifier = Modifier
                 .padding(5.dp)
                 .wrapContentHeight()

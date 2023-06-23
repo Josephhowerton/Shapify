@@ -4,8 +4,8 @@ package com.fitness.onboarding.navigation
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import com.fitness.framework.enums.AuthState
-import com.fitness.framework.auth.AuthStateManager
+import com.fitness.framework.auth.AuthState
+import com.fitness.framework.auth.AuthStateManager.setAuthState
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.navigation
 import com.fitness.navigation.Destinations
@@ -39,7 +39,7 @@ class OnboardingEntryImpl @Inject constructor(): OnboardingEntry() {
 
             composable(onboardingThree) {
                 OnboardingScreenThree {
-                    AuthStateManager.setAuthState(AuthState.LoggedIn)
+                    setAuthState(AuthState.LoggedIn)
                 }
             }
         }

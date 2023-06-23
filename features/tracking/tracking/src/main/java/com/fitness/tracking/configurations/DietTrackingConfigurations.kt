@@ -17,15 +17,13 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.fitness.framework.enums.TimelineConfiguration
-import com.fitness.shapify.theme.PrimaryBlue
-import util.ScreenUtil
 import components.BlankItemComponent
+import components.HealthSummaryConfiguration
 import components.DailyHealthItemComponent
-import components.HorizontalHealthTrackingSummary
 import components.MonthlyHealthItemComponent
 import components.NoDataDisplayedItemComponent
-import components.TimelineButtonComponent
-import components.VerticalHealthTrackingSummary
+import components.DatePickerComponent
+import components.HealthSummaryComponent
 import components.WeeklyHealthItemComponent
 
 @Preview
@@ -56,7 +54,7 @@ private fun DietTrackingMetricsPreview(){
 }
 
 @Composable
-fun DietTrackingConfiguartion(configuration: TimelineConfiguration, modifier: Modifier) {
+fun DietTrackingConfiguration(configuration: TimelineConfiguration, modifier: Modifier) {
     return when(configuration) {
         TimelineConfiguration.DAILY -> DailyDietTrackingConfiguration(modifier)
         TimelineConfiguration.WEEKLY -> WeeklyDietTrackingConfiguration(modifier)
@@ -178,14 +176,9 @@ private fun DietTrackingMetrics(configuration: TimelineConfiguration, modifier: 
         proteinSummaryRef,
         dateRef) = createRefs()
 
-    val currentCalories = 1000
-    val maxCalories = 18000
-
-    HorizontalHealthTrackingSummary(title = "Calories",
-        description = "$currentCalories calories out of $maxCalories",
-        true,
-        .5f,
-        PrimaryBlue,
+    //TODO(Add data for user calories)
+    HealthSummaryComponent(
+        configuration = HealthSummaryConfiguration.HORIZONTAL,
         modifier = Modifier
             .wrapContentHeight()
             .constrainAs(caloriesSummaryRef) {
@@ -193,33 +186,23 @@ private fun DietTrackingMetrics(configuration: TimelineConfiguration, modifier: 
                 start.linkTo(parent.start, 10.dp)
                 end.linkTo(proteinSummaryRef.start, 10.dp)
                 width = Dimension.fillToConstraints
-            })
+            }
+    )
 
-    val currentCarbs = 1000
-    val maxCarbs = 18000
+    //TODO(Add data for user carbohydrates)
+    HealthSummaryComponent(
+        configuration = HealthSummaryConfiguration.HORIZONTAL,
+        modifier = Modifier.wrapContentHeight().constrainAs(carbSummaryRef) {
+            top.linkTo(caloriesSummaryRef.bottom, 20.dp)
+            end.linkTo(caloriesSummaryRef.end)
+            start.linkTo(caloriesSummaryRef.start)
+            width = Dimension.fillToConstraints
+        }
+    )
 
-    HorizontalHealthTrackingSummary(title = "Carbohydrates",
-        description = "$currentCarbs carbs out of $maxCarbs",
-        true,
-        .75f,
-        PrimaryBlue,
-        modifier = Modifier
-            .wrapContentHeight()
-            .constrainAs(carbSummaryRef) {
-                top.linkTo(caloriesSummaryRef.bottom, 20.dp)
-                end.linkTo(caloriesSummaryRef.end)
-                start.linkTo(caloriesSummaryRef.start)
-                width = Dimension.fillToConstraints
-            })
-
-    val currentFat = 1000
-    val maxFat = 18000
-
-    HorizontalHealthTrackingSummary(title = "Fat",
-        description = "$currentFat fat out of $maxFat",
-        true,
-        .25f,
-        PrimaryBlue,
+    //TODO(Add data for user fat content)
+    HealthSummaryComponent(
+        configuration = HealthSummaryConfiguration.HORIZONTAL,
         modifier = Modifier
             .wrapContentHeight()
             .constrainAs(fatSummaryRef) {
@@ -227,24 +210,12 @@ private fun DietTrackingMetrics(configuration: TimelineConfiguration, modifier: 
                 end.linkTo(caloriesSummaryRef.end)
                 start.linkTo(caloriesSummaryRef.start)
                 width = Dimension.fillToConstraints
-            })
+            }
+    )
 
-    val currentProtein = 1000
-    val maxProtein = 18000
-
-    val startedWeight = 324.0f
-    val currentWeight = 278.0f
-    val targetWeight = 200.0f
-
-
-    VerticalHealthTrackingSummary(proteinDesc = "$currentProtein protein out of $maxProtein",
-        weightDesc = "${
-            ScreenUtil.calculateWeightProgress(
-                startedWeight,
-                currentWeight,
-                targetWeight
-            )
-        }% towards $targetWeight lb",
+    //TODO(Add data for protein and weight)
+    HealthSummaryComponent(
+        configuration = HealthSummaryConfiguration.VERTICAL,
         modifier = Modifier
             .width(150.dp)
             .constrainAs(proteinSummaryRef) {
@@ -253,9 +224,10 @@ private fun DietTrackingMetrics(configuration: TimelineConfiguration, modifier: 
                 start.linkTo(caloriesSummaryRef.end)
                 end.linkTo(parent.end, 10.dp)
                 height = Dimension.fillToConstraints
-            })
+            }
+    )
 
-    TimelineButtonComponent(configuration = configuration, modifier = Modifier.constrainAs(dateRef) {
+    DatePickerComponent(configuration = configuration, modifier = Modifier.constrainAs(dateRef) {
         top.linkTo(proteinSummaryRef.bottom, margin = 15.dp)
         start.linkTo(parent.start)
     }){

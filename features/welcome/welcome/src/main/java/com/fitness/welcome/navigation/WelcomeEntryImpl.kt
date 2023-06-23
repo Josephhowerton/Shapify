@@ -5,7 +5,6 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.fitness.auth.CreateEntry
 import com.fitness.auth.LoginEntry
-import com.fitness.welcome.WelcomeEntry
 import com.fitness.navigation.Destinations
 import com.fitness.navigation.find
 import com.fitness.welcome.WelcomeScreen

@@ -13,8 +13,8 @@ import com.fitness.planner.HealthPlannerEntry
 import com.fitness.planner.WorkoutPlannerEntry
 import com.fitness.profile.ProfileEntry
 import com.fitness.settings.SettingsEntry
-import com.fitness.shapify.components.drawer.AppBarWithNavigationDrawer
-import com.fitness.shapify.di.provider.LocalAppProvider
+import com.fitness.shapify.components.AppBarWithNavigationDrawer
+import com.fitness.shapify.di.LocalAppProvider
 import com.fitness.tracking.HealthTrackingEntry
 import com.fitness.tracking.WorkoutTrackingEntry
 import com.fitness.training.TrainingEntry

@@ -1,7 +1,7 @@
 package com.fitness.remote.usecase.auth.create
 
 
-import com.fitness.framework.auth.auth
+import com.fitness.framework.auth.authenticate
 import com.fitness.framework.state.DataState
 import com.fitness.framework.usecase.DataStateUseCase
 import com.fitness.model.remote.user.UserDto
@@ -19,7 +19,7 @@ class EmailPasswordCreateUseCase @Inject constructor(
     override suspend fun FlowCollector<DataState<UserDto>>.execute(params: Params) {
         val auth = authRepository.createUserWithEmailAndPassword(  email = params.email, password = params.password)
 
-        val response = auth { auth }
+        val response = authenticate { auth }
 
         val userDto = response.map {
             it.toUserDto(firstname = params.firstname, lastname = params.lastname)

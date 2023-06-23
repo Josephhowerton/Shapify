@@ -1,21 +1,13 @@
 package com.fitness.model.util.extensions
 
-import com.fitness.framework.cache.createUniqueIdentifier
+import com.fitness.model.util.createUniqueIdentifier
 import com.fitness.framework.extensions.StaticExtensions.emptyString
-import com.fitness.model.cache.nutrition.DietRestrictionsEntity
 import com.fitness.model.cache.nutrition.food.FoodEntity
 import com.fitness.model.cache.nutrition.food.MeasureEntity
 import com.fitness.model.cache.nutrition.food.NutrientsEntity
 import com.fitness.model.cache.nutrition.food.QualifiedEntity
 import com.fitness.model.cache.nutrition.food.QualifierEntity
 import com.fitness.model.cache.nutrition.food.ServingSizeEntity
-import com.fitness.model.domain.nutrition.DietRestrictions
-import com.fitness.model.domain.nutrition.food.Food
-import com.fitness.model.domain.nutrition.food.Measure
-import com.fitness.model.domain.nutrition.food.Nutrients
-import com.fitness.model.domain.nutrition.food.Qualified
-import com.fitness.model.domain.nutrition.food.Qualifier
-import com.fitness.model.domain.nutrition.food.ServingSize
 import com.fitness.model.remote.nutrition.food.FoodDto
 import com.fitness.model.remote.nutrition.food.MeasureDto
 import com.fitness.model.remote.nutrition.food.NutrientsDto
