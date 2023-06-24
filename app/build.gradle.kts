@@ -1,3 +1,5 @@
+import config.Configs
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -9,16 +11,16 @@ plugins {
 
 android {
     namespace = "com.fitness.shapify"
-    compileSdk = config.Configs.CompileSdk
+    compileSdk = Configs.CompileSdk
 
     defaultConfig {
         applicationId = "com.fitness.shapify"
-        minSdk = config.Configs.MinSdk
-        targetSdk = config.Configs.TargetSdk
-        versionCode = config.Configs.VersionCode
-        versionName = config.Configs.VersionName
+        minSdk = Configs.MinSdk
+        targetSdk = Configs.TargetSdk
+        versionCode = Configs.VersionCode
+        versionName = Configs.VersionName
 
-        testInstrumentationRunner = config.Configs.AndroidJunitRunner
+        testInstrumentationRunner = Configs.AndroidJunitRunner
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -38,13 +40,28 @@ android {
         }
     }
 
+
+    flavorDimensions.add(Configs.FlavorDimension)
+    productFlavors {
+        create(Configs.ShapifyFlavor) {
+            dimension = Configs.FlavorDimension
+        }
+        create(Configs.HealthFlavor) {
+            dimension = Configs.FlavorDimension
+            targetSdk = Configs.HealthConnectTargetSdk
+            compileSdk = Configs.HealthConnectCompileSdk
+            minSdk = Configs.HealthConnectMinSdk
+        }
+    }
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = config.Configs.JvmTarget
+        jvmTarget = Configs.JvmTarget
     }
 
     buildFeatures {
@@ -53,7 +70,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = config.Configs.KotlinCompilerExtensionVersion
+        kotlinCompilerExtensionVersion = Configs.KotlinCompilerExtensionVersion
     }
 
     packaging {

@@ -1,8 +1,6 @@
 package com.fitness.model.util.extensions
 
-import com.fitness.model.cache.exercise.shared.SetsRepsEntity
 import com.fitness.model.cache.exercise.shared.ExerciseEntity
-import com.fitness.model.cache.health.connect.ActiveCaloriesBurnedEntity
 import com.fitness.model.domain.exercise.ExerciseItem
 import com.fitness.model.domain.exercise.Exercise
 import com.fitness.model.remote.exercise.ExerciseDto

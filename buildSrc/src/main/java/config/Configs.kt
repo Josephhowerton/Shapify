@@ -24,6 +24,15 @@ object Configs {
     const val TargetSdk = CompileSdk
     const val MinSdk = 26
 
+    const val FlavorDimension = "shapify"
+    const val ShapifyFlavor = "shapify"
+
+    const val HealthFlavorDimension = "shapifyHealth"
+    const val HealthFlavor = "shapifyHealth"
+    const val HealthConnectCompileSdk = 34
+    const val HealthConnectTargetSdk = 34
+    const val HealthConnectMinSdk = 34
+
     const val AndroidJunitRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     val SourceCompatibility = JavaVersion.VERSION_17
